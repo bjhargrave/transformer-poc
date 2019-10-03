@@ -45,6 +45,8 @@ You can use your system `gradle` but we require at least version 5.0.
 - `./gradlew build` - Assembles and tests the project. After building, a distribution zip/tar can be found in `build/distributions`.
 - `./gradlew run --args="--help"` - Runs the project. You can use whatever arguments you wish.
 
+[![Travis CI Build Status](https://travis-ci.com/bjhargrave/transformer.svg?branch=master)](https://travis-ci.com/bjhargrave/transformer)
+
 ## Future work
 
 See the [open issues](https://github.com/bjhargrave/transformer/issues) for the list of outstanding TODOs.
