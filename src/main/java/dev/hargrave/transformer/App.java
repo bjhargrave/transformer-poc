@@ -25,7 +25,6 @@ import org.apache.commons.cli.ParseException;
 import aQute.bnd.osgi.FileResource;
 import aQute.bnd.osgi.Jar;
 import aQute.bnd.osgi.JarResource;
-import aQute.bnd.osgi.Processor;
 import aQute.bnd.osgi.Resource;
 import aQute.lib.io.IO;
 import aQute.lib.utf8properties.UTF8Properties;
@@ -132,9 +131,8 @@ public class App {
 			properties.load(in);
 		}
 
-		Processor rules = new Processor(properties, false);
 		PrintStream verbose = cli.hasOption(VERBOSE) ? System.err : new PrintStream(IO.nullStream);
-		Transformer transformer = new Transformer(verbose, rules);
+		Transformer transformer = new Transformer(verbose, properties);
 
 		try (OutputStream cli_out = cli.hasOption(OUTPUT) ? IO.outputStream(IO.getFile(cli.getOptionValue(OUTPUT)))
 			: null) {

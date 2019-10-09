@@ -31,6 +31,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.function.Predicate;
 
 import aQute.bnd.classfile.AnnotationDefaultAttribute;
@@ -110,7 +111,6 @@ import aQute.lib.strings.Strings;
 import aQute.libg.glob.PathSet;
 
 public class Transformer {
-	static final Attribute[]			EMPTY_ATTRIBUTE_ARRAY	= new Attribute[0];
 	static final String					metainfServices			= "META-INF/services/";
 	static final int					metainfServicesLength	= metainfServices.length();
 	static final Predicate<String>		metainfServicesFilter	= new PathSet(metainfServices + "*").matches();
@@ -121,13 +121,13 @@ public class Transformer {
 	private final Map<String, String>	signatures				= new HashMap<>();
 	private final Map<String, String>	descriptors				= new HashMap<>();
 
-	public Transformer(PrintStream verbose, Processor rules) {
+	public Transformer(PrintStream verbose, Properties properties) {
 		this.verbose = verbose;
-		this.rules = rules;
+		this.rules = new Processor(properties, false);
 		this.packageRenames = OSGiHeader.parseProperties(rules.mergeProperties("-package-rename"));
 	}
 
-	public enum SignatureType {
+	enum SignatureType {
 		CLASS,
 		FIELD,
 		METHOD
