@@ -837,13 +837,13 @@ public class Transformer {
 				String signature = desc.replace('$', '.');
 				Optional<String> transformedSig = transformSignature(signature, SignatureType.METHOD);
 				return transformedSig.map(sig -> sig.replace('.', '$'))
-					.orElse(signature);
+					.orElse(desc);
 			}
 			if ((c == '[') || ((c == 'L') && (desc.charAt(desc.length() - 1) == ';'))) {
 				String signature = desc.replace('$', '.');
 				Optional<String> transformedSig = transformSignature(signature, SignatureType.FIELD);
 				return transformedSig.map(sig -> sig.replace('.', '$'))
-					.orElse(signature);
+					.orElse(desc);
 			}
 			return desc;
 		});
