@@ -14,7 +14,7 @@ targetCompatibility = '1.8'
 dependencies {
     implementation 'biz.aQute.bnd:biz.aQute.bndlib:4.3.1'
     implementation 'commons-cli:commons-cli:1.4'
-    runtimeOnly 'org.slf4j:slf4j-simple:1.7.25'
+    runtimeOnly 'org.slf4j:slf4j-simple:1.7.29'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
     testImplementation 'org.assertj:assertj-core:3.14.0'
     testImplementation 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
