@@ -19,8 +19,8 @@ You can use your system `gradle` but we require at least version 5.0.
 - `./gradlew build` - Assembles and tests the project
 - `./gradlew run --args="--help"` - Runs the project. You can use whatever argument you wish.
 
-We use [Travis CI](https://travis-ci.com/bjhargrave/transformer) and the repo includes a
-`.travis.yml` file to build on Travis CI.
+We use [GitHub Actions](https://github.com/bjhargrave/transformer/actions?query=workflow%3A%22CI%20Build%22) and the repo includes a
+`.github/workflows/cibuild.yml` file to build via GitHub Actions.
 
 ## Workflow
 
@@ -57,10 +57,6 @@ unless you are already using Git 2.0 where it is the default.
 Finally, the third side of the triangle is pull requests from your fork repo to the
 main repo.
 
-Make sure to set up [Travis CI](https://travis-ci.com) for your fork repo to test your commits
-when they are pushed to your fork repo. Travis CI will also build any [pull requests you 
-submit](https://travis-ci.com/bjhargrave/transformer/pull_requests).
-
 ## Contribution guidelines
 
 ### Pull requests are always welcome
@@ -96,8 +92,7 @@ Fork the repo and make changes on your fork in a feature branch:
   intentions, and name it XXX-something where XXX is the number of the issue.
 
 Submit unit tests for your changes. We use JUnit 5. Run the full build including all
-the tests in your branch before submitting a pull request. Having Travis CI set up
-for your fork repo is quite a help here.
+the tests in your branch before submitting a pull request.
 
 Write clean code. Universally formatted code promotes ease of writing, reading,
 and maintenance. We use Eclipse and the project has Eclipse `.settings` which
