@@ -45,7 +45,7 @@ You can use your system `gradle` but we require at least version 5.0.
 - `./gradlew build` - Assembles and tests the project. After building, a distribution zip/tar can be found in `build/distributions`.
 - `./gradlew run --args="--help"` - Runs the project. You can use whatever arguments you wish.
 
-[![Travis CI Build Status](https://travis-ci.com/bjhargrave/transformer.svg?branch=master)](https://travis-ci.com/bjhargrave/transformer)
+[![GitHub Actions CI Build Status](https://github.com/bjhargrave/transformer/workflows/CI%20Build/badge.svg)](https://github.com/bjhargrave/transformer/actions?query=workflow%3A%22CI%20Build%22)
 
 ## Future work
 
