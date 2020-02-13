@@ -115,6 +115,14 @@ public class AppTest {
 				.hasSize(1)
 				.flatExtracting(a -> Arrays.asList(a.exceptions))
 				.containsExactlyInAnyOrder("jakarta/servlet/ServletException", "java/io/IOException");
+			softly.assertThat(cf.fields)
+				.filteredOn(f -> f.name.equals("xaResource"))
+				.hasSize(1)
+				.allMatch(f -> f.descriptor.equals("Ljavax/transaction/xa/XAResource;"));
+			softly.assertThat(cf.fields)
+				.filteredOn(f -> f.name.equals("transactionSynchronizationRegistry"))
+				.hasSize(1)
+				.allMatch(f -> f.descriptor.equals("Ljakarta/transaction/TransactionSynchronizationRegistry;"));
 		}
 	}
 
