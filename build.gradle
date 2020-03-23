@@ -15,7 +15,7 @@ dependencies {
     implementation 'biz.aQute.bnd:biz.aQute.bndlib:5.0.0'
     implementation 'commons-cli:commons-cli:1.4'
     runtimeOnly 'org.slf4j:slf4j-simple:1.7.30'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.1'
     testImplementation 'org.assertj:assertj-core:3.15.0'
     testImplementation 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
 }
