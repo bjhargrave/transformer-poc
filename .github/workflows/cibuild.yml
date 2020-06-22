@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Git Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2.3.1
     - name: Gradle Wrapper Validation
       uses: gradle/wrapper-validation-action@v1
     - name: Set up Java
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Git Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2.3.1
     - name: Gradle Wrapper Validation
       uses: gradle/wrapper-validation-action@v1
     - name: Set up Java
@@ -43,7 +43,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Git Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2.3.1
     - name: Gradle Wrapper Validation
       uses: gradle/wrapper-validation-action@v1
     - name: Set up Java
@@ -59,7 +59,7 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Git Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2.3.1
     - name: Gradle Wrapper Validation
       uses: gradle/wrapper-validation-action@v1
     - name: Set up Java
