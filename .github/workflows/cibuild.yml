@@ -1,72 +1,48 @@
 name: CI Build
 
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore:
+    - 'dependabot/**'
+    paths-ignore:
+    - '.github/*.yml'
+  pull_request:
+    paths-ignore:
+    - '.github/*.yml'
 
 env:
   LC_ALL: en_US.UTF-8
+  GRADLE_OPTS: >-
+    -Dorg.gradle.parallel=true
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
-  OpenJDK8_Linux:
-    name: OpenJDK8 Linux
-    runs-on: ubuntu-latest
+  build:
+    strategy:
+      matrix:
+        os: [ 'ubuntu-latest' ]
+        java: [ '8', '11', '17' ]
+        include:
+        - os: 'windows-latest'
+          java: '8'
+        - os: 'macos-latest'
+          java: '8'
+    name: JDK${{ matrix.java }} ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     steps:
     - name: Git Checkout
       uses: actions/checkout@v2
     - name: Gradle Wrapper Validation
       uses: gradle/wrapper-validation-action@v1
     - name: Set up Java
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v2
       with:
-        java-version: 1.8
+        distribution: 'temurin'
+        java-version: ${{ matrix.java }}
     - name: Build
-      shell: bash
-      run: |
-        ./.github/scripts/build.sh
-  OpenJDK11_Linux:
-    name: OpenJDK11 Linux
-    runs-on: ubuntu-latest
-    steps:
-    - name: Git Checkout
-      uses: actions/checkout@v2
-    - name: Gradle Wrapper Validation
-      uses: gradle/wrapper-validation-action@v1
-    - name: Set up Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
-    - name: Build
-      shell: bash
-      run: |
-        ./.github/scripts/build.sh
-  OpenJDK8_Windows:
-    name: OpenJDK8 Windows
-    runs-on: windows-latest
-    steps:
-    - name: Git Checkout
-      uses: actions/checkout@v2
-    - name: Gradle Wrapper Validation
-      uses: gradle/wrapper-validation-action@v1
-    - name: Set up Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: Build
-      shell: bash
-      run: |
-        ./.github/scripts/build.sh
-  OpenJDK8_macOS:
-    name: OpenJDK8 macOS
-    runs-on: macos-latest
-    steps:
-    - name: Git Checkout
-      uses: actions/checkout@v2
-    - name: Gradle Wrapper Validation
-      uses: gradle/wrapper-validation-action@v1
-    - name: Set up Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: Build
-      shell: bash
+      id: build
       run: |
         ./.github/scripts/build.sh
